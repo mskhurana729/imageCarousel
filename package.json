@@ -12,7 +12,6 @@
   "keywords": [],
   "author": "Manpreet Singh Khurana <mskhurana729@gmail.com>",
   "license": "MIT",
-  "description": "",
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "css-loader": "^7.1.2",
@@ -34,5 +33,14 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mskhurana729/imageCarousel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mskhurana729/imageCarousel/issues"
+  },
+  "homepage": "https://github.com/mskhurana729/imageCarousel#readme",
+  "description": ""
 }
