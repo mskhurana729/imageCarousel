@@ -31,7 +31,6 @@ export class ImageCarousel {
   setNextImage(index) {
     let nextImageIndex = +index + 1;
     if (nextImageIndex >= this.images.length) {
-      console.log(nextImageIndex);
       this.nextImage = this.images[0];
     } else {
       this.nextImage = this.images[nextImageIndex];
