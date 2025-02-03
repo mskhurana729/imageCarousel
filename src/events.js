@@ -1,6 +1,10 @@
 import { Render } from "./render.js";
-export const events = function (imageCarouselContainer, ImageCarousel) {
-  const RenderImages = new Render(ImageCarousel); //Create a render instance for specific images
+export const events = function (
+  imageCarouselContainer,
+  ImageCarousel,
+  RenderImages,
+) {
+  // const RenderImages = new Render(ImageCarousel); //Create a render instance for specific images
 
   function nextImageButtonEvent() {
     //this will show next image and hide current image and set new current,previous and next image
