@@ -3,37 +3,41 @@
 //that it should have a function setCurrentImage which will update the currentImage
 //and a function getCurrentImage Which returns current image
 
-class ImageCarousel {
-  constructor(images) {
+export class ImageCarousel {
+  constructor(images = []) {
     this.images = images;
     this.currentImage = images[0];
     this.previousImage = images[images.length - 1];
     this.nextImage = images[1];
   }
-  static getCurrentImage() {
+  getCurrentImage() {
     return this.currentImage;
   }
-  static setCurrentImage(index) {
+  setCurrentImage(index) {
     this.currentImage = this.images[index];
+    this.setNextImage(index);
+    this.setPreviousImage(index);
   }
-  static setPreviousImage(index) {
+  setPreviousImage(index) {
     if (index - 1 < 0) {
-      this.previousImage = images[images.length - 1];
+      this.previousImage = this.images[this.images.length - 1];
     } else {
-      this.previousImage = images[index - 1];
+      this.previousImage = this.images[index - 1];
     }
   }
-  static getPreviousImage() {
+  getPreviousImage() {
     return this.previousImage;
   }
-  static setNextImage(index) {
-    if (index + 1 >= images.length) {
+  setNextImage(index) {
+    let nextImageIndex = +index + 1;
+    if (nextImageIndex >= this.images.length) {
+      console.log(nextImageIndex);
       this.nextImage = this.images[0];
     } else {
-      this.nextImage = this.images[index + 1];
+      this.nextImage = this.images[nextImageIndex];
     }
   }
-  static getNextImage() {
+  getNextImage() {
     return this.nextImage;
   }
 }
