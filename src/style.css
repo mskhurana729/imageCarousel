@@ -11,6 +11,17 @@
 }
 .pictureFrame {
   grid-area: 1/2/2/3;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.natureImage {
+  height: 300px;
+  width: 500px;
+  display: none;
+}
+.visible {
+  display: block;
 }
 .navigationDotsContainer {
   grid-area: 2/2/-1/3;
