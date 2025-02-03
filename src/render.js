@@ -19,7 +19,7 @@ export class Render {
   static toggleVisibleClass(elm) {
     elm.classList.toggle("visible");
   }
-  //we want to create a function which will create a navigation dots for each image
+
   displayNavigationDots() {
     this.ImageCarousel.images.forEach((image) => {
       let index = image.dataset.index;
@@ -27,10 +27,17 @@ export class Render {
     });
   }
   changeStyleOfCurrentImageNavigationDot() {
-    let currentImageIndex = this.ImageCarousel.getCurrentImage().dataset.index;
-    console.log(currentImageIndex);
     let navigationDots = document.querySelectorAll(".circle");
-    console.log(navigationDots);
-    navigationDots[currentImageIndex].style.backgroundColor = "Grey";
+
+    navigationDots.forEach((navDot) => {
+      navDot.classList.remove("currentImageNavDot");
+    });
+    let currentImageIndex = this.ImageCarousel.getCurrentImage().dataset.index;
+
+    navigationDots[currentImageIndex].classList.add("currentImageNavDot");
+  }
+  hideCurrentImage() {
+    let currentImage = this.ImageCarousel.getCurrentImage();
+    Render.toggleVisibleClass(currentImage);
   }
 }

@@ -4,20 +4,33 @@ export const events = function (
   ImageCarousel,
   RenderImages,
 ) {
-  // const RenderImages = new Render(ImageCarousel); //Create a render instance for specific images
+  function navigationDotsEvent() {
+    //this will show the image linked to clicked navDot
+    let navigationDots = document.querySelectorAll(".navigationDot");
+    navigationDots.forEach((navDot) => {
+      navDot.addEventListener("click", () => {
+        RenderImages.hideCurrentImage();
+
+        let index = navDot.dataset.index;
+
+        ImageCarousel.setCurrentImage(index);
+        RenderImages.displayImage();
+        RenderImages.changeStyleOfCurrentImageNavigationDot();
+      });
+    });
+  }
 
   function nextImageButtonEvent() {
     //this will show next image and hide current image and set new current,previous and next image
     const nextImageBtn = imageCarouselContainer.querySelector(".nextImageBtn");
     nextImageBtn.addEventListener("click", () => {
-      let currentImage = ImageCarousel.getCurrentImage();
-      Render.toggleVisibleClass(currentImage);
-
+      RenderImages.hideCurrentImage();
       let nextImage = ImageCarousel.getNextImage();
       let nextImageIndex = nextImage.dataset.index;
       ImageCarousel.setCurrentImage(nextImageIndex);
 
       RenderImages.displayImage();
+      RenderImages.changeStyleOfCurrentImageNavigationDot();
     });
   }
   function previousImageButtonEvent() {
@@ -33,7 +46,12 @@ export const events = function (
       ImageCarousel.setCurrentImage(previousImageIndex);
 
       RenderImages.displayImage();
+      RenderImages.changeStyleOfCurrentImageNavigationDot();
     });
   }
-  return { nextImageButtonEvent, previousImageButtonEvent };
+  return {
+    nextImageButtonEvent,
+    previousImageButtonEvent,
+    navigationDotsEvent,
+  };
 };

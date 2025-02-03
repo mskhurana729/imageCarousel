@@ -18,4 +18,5 @@ import { Render } from "./render";
   natureImageCarouselEvents.previousImageButtonEvent();
   RenderImages.displayNavigationDots();
   RenderImages.changeStyleOfCurrentImageNavigationDot();
+  natureImageCarouselEvents.navigationDotsEvent();
 })();
