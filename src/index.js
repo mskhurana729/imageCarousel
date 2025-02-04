@@ -9,14 +9,17 @@ import { Render } from "./render";
   let natureImages = pictureFrame.querySelectorAll("img");
   let natureImagesCarouselClass = new ImageCarousel(natureImages);
   const RenderImages = new Render(natureImagesCarouselClass); //Create a render instance for specific images
+
   let natureImageCarouselEvents = events(
     container,
     natureImagesCarouselClass,
     RenderImages,
   );
+
   natureImageCarouselEvents.nextImageButtonEvent();
   natureImageCarouselEvents.previousImageButtonEvent();
-  RenderImages.displayNavigationDots();
-  RenderImages.changeStyleOfCurrentImageNavigationDot();
+
+  RenderImages.displayImage();
   natureImageCarouselEvents.navigationDotsEvent();
+  RenderImages.showSlides();
 })();

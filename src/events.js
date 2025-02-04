@@ -7,15 +7,16 @@ export const events = function (
   function navigationDotsEvent() {
     //this will show the image linked to clicked navDot
     let navigationDots = document.querySelectorAll(".navigationDot");
+    console.log(navigationDots);
     navigationDots.forEach((navDot) => {
       navDot.addEventListener("click", () => {
+        console.log("hello");
         RenderImages.hideCurrentImage();
 
         let index = navDot.dataset.index;
-
+        console.log(index);
         ImageCarousel.setCurrentImage(index);
         RenderImages.displayImage();
-        RenderImages.changeStyleOfCurrentImageNavigationDot();
       });
     });
   }

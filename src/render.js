@@ -5,25 +5,41 @@ export class Render {
   static navigationDotsContainer = document.querySelector(
     ".navigationDotsContainer",
   );
-  static createNavigationDot(index) {
+  createNavigationDot(index) {
     let navigationDot = document.createElement("div");
     navigationDot.setAttribute("data-index", index);
     navigationDot.classList.add("circle", "navigationDot");
-    this.navigationDotsContainer.appendChild(navigationDot);
+    Render.navigationDotsContainer.appendChild(navigationDot);
   }
 
   displayImage() {
     let currentImage = this.ImageCarousel.getCurrentImage();
     Render.toggleVisibleClass(currentImage);
+    this.displayNavigationDots();
+    this.changeStyleOfCurrentImageNavigationDot();
   }
   static toggleVisibleClass(elm) {
     elm.classList.toggle("visible");
   }
 
   displayNavigationDots() {
+    Render.navigationDotsContainer.textContent = "";
     this.ImageCarousel.images.forEach((image) => {
       let index = image.dataset.index;
-      Render.createNavigationDot(index);
+      this.createNavigationDot(index);
+    });
+    let navigationDots = document.querySelectorAll(".navigationDot");
+    console.log(navigationDots);
+    navigationDots.forEach((navDot) => {
+      navDot.addEventListener("click", () => {
+        console.log("hello");
+        this.hideCurrentImage();
+
+        let index = navDot.dataset.index;
+        console.log(index);
+        this.ImageCarousel.setCurrentImage(index);
+        this.displayImage();
+      });
     });
   }
   changeStyleOfCurrentImageNavigationDot() {
@@ -39,5 +55,21 @@ export class Render {
   hideCurrentImage() {
     let currentImage = this.ImageCarousel.getCurrentImage();
     Render.toggleVisibleClass(currentImage);
+  }
+  //show slides will show next image every 5 seconds
+  slideIndex = 0;
+  showSlides() {
+    let images = this.ImageCarousel.images;
+    images.forEach((image) => {
+      image.classList.remove("visible");
+    });
+    this.ImageCarousel.setCurrentImage(this.slideIndex);
+    this.displayImage();
+    if (this.slideIndex >= images.length - 1) {
+      this.slideIndex = 0;
+    } else {
+      ++this.slideIndex;
+    }
+    setTimeout(this.showSlides.bind(this), 5000);
   }
 }
