@@ -1,0 +1,11 @@
+{
+  "name": "@mskhurana729/image-carousel",
+  "version": "1.0.0",
+  "description": "It will create a image carousel ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manpreet Singh Khurana <mskhurana729@gmail.com>",
+  "license": "MIT"
+}
